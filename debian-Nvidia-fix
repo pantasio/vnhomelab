@@ -1,0 +1,142 @@
+There are so many horror stories across stack exchange and miscellaneous *nix forums about users loading the latest NVIDIA driver, rebooting and unenthusiastically staring at either:
+a) A black/blank screen
+b) A flashing “-” tick in the top left corner (probably mocking you)
+c) A never ending loop of the splash screen
+I read about so many users (such as myself) giving up, and reinstalling their respective distribution of choice simply because they cant access a teletypewriter terminal (Ctrl+Alt-<distro-specific-key>) or recovery mode from the dead stare the screen is now giving them.
+Thankfully there is a solution, it only took me 2 weeks of re-installing multiple distributions to realize the problem was actually with my machine, and not my Linux distro.
+My issue was that of a) stated above, I installed the driver, rebooted my machine, and stared at the blank screen for minutes before realizing nothing was going to happen, I could not access recovery mode, and if I could, the kernel loaded improper drivers and I was back at the black screen (of death).
+In this tutorial I am going to introduce a method to configure your hardware, install the proprietary driver, along with a fail safe directive to ensure you can escape the clutches “nvidia-error” black hole. I wont provide any low-level technical explanations because I know you just want the driver.
+I am adding to the method developed by an askubuntu.com user named Andreas, who posted the solution that ended my 40 days and 40 nights in the GRUB desert.
+You can view that thread > here <
+If you are at the black screen right now, and cannot access recovery mode, then you know what you have to do…
+(Nuke your machine, unless you have ssh access configured, then keep going.)
+This method should (famous last words) work for any newer *buntu distribution with an EFI boot.
+So lets begin.
+A little about setup:
+- Macbook Pro (2011, 17")
+- Linux 4.13.0–38-generic
+- Ubuntu x86_64 GNU/Linux
+- VGA: NVIDIA Corporation GT216M [GeForce GT 330M]
+- Ubuntu 17.10 artful
+Here is what I see from lspci output after completing this:
+sudo lspci -vk
+…
+01:00.0 VGA compatible controller: NVIDIA Corporation GT216M [GeForce GT 330M]
+…
+ Kernel driver in use: nvidia
+ Kernel modules: nvidiafb, nouveau, nvidia_340
+To confirm I have an efi booted version of linux:
+sudo ls -l /sys/firmware/efi/ 
+-r — r — r — 1 root root 4096 Apr 19 22:10 config_table
+drwxr-xr-x 2 root root 0 Apr 19 21:26 efivars
+This tutorial is broken down into a few steps, and sounds a lot harder than it is.
+1) enable remote access
+2) alter PCI-E bus identifiers
+3) reboot, sanity check
+4) modify grub environment variables
+5) install your recommended NVIDIA driver
+6) reboot, drumroll
+I am assuming you are able to get to a login splash screen right now, if you can only get to a root terminal from recovery mode, purge your NVIDIA drivers because were starting from scratch.
+sudo apt-get purge nvidia-*
+sudo apt-get install xserver-xorg-video-nouveau
+sudo reboot
+Enable Remote Access (Safeguard)
+Ok, first things first, we will add the safeguard.
+Connect your machine to the Internet via an Ethernet cable, we don't want to rely on the wireless drivers, or cards for this.
+Once you have done so, lets enable ssh access:
+sudo apt-get install openssh-client openssh-server
+Cool, test this out with another machine, or an app on your phone (iPhone/Android). Discover your local address, and ssh as your username into that address.
+(Dont know your local address?)
+sudo apt-get install net-tools
+sudo ifconfig
+Now, look for an address in the 192.168.0.0/16 CIDR.
+Mine is “192.168.1.160”.
+ssh <username>@192.186.X.X (where .X.X are your last two bytes.)
+Now you should have a shell.
+This safeguard will grant you shell access remotely, you can work on your machine while it sits in the stale black screen state if need be. From here you can purge nvidia and try another method.
+PCI-Express Bus Identifiers
+Run the lshw command with these options and look for your display cards PCI-E ID.
+sudo lshw -businfo -class bridge -class display
+Bus info Device Class Description
+========================================
+pci@0000:00:00.0 bridge Core Processor DRAM Controller
+pci@0000:00:01.0 bridge Core Processor PCI Express x16 Root Port
+pci@0000:01:00.0 display GT216M [GeForce GT 330M]
+pci@0000:00:02.0 display Core Processor Integrated Graphics Controller
+pci@0000:00:1c.0 bridge 5 Series/3400 Series Chipset PCI Express Root Port 1
+The only two you care about are your display, and the bridge ID above it.
+Now jot down those last couple of bytes that will identify them to the kernel, for me I am tweaking 00:01.0 and 01:00.0. (My bridge, and display device respectively.)
+Now touch a new grub daemon file to be loaded at kernel runtime.
+sudo touch /etc/grub.d/01_enable_vga.conf
+Insert this line into your shell. (replace bold ID’s with yours)
+sudo echo -e "cat << EOF\nsetpci -s \"00:01.0\" 3e.b=8\nsetpci -s \"01:00.0\" 04.b=7\nEOF" > /etc/grub.d/01_enable_vga.conf
+Verify your file is formatted properly.
+sudo cat /etc/grub.d/01_enable_vga.conf
+cat << EOF
+setpci -s “00:01.0” 3e.b=8
+setpci -s “01:00.0” 04.b=7
+EOF
+Change the file permissions
+sudo chmod 755 /etc/grub.d/01_enable_vga.conf
+Update grub
+sudo update-grub
+First Reboot
+k, cool you’re still here.
+sudo reboot
+Upon reboot, you should get your login splash screen again, login and check to see if those register values have changed to 7, and 8 (bridge, and display).
+(replace bold ID’s with those of your PCI-E configuration as you did above)
+sudo setpci -s "00:01.0" 3e.b
+08 
+sudo setpci -s "01:00.0" 04.b
+07
+Did you see 07 and 08? Good!
+Grub Environment Variables
+Were almost finished configuring this h̶a̶c̶k̶ , w̶o̶r̶k̶a̶r̶o̶u̶n̶d̶ , fix.
+Lets edit the grub default file
+sudo vi /etc/default/grub
+GRUB_DEFAULT=0
+GRUB_HIDDEN_TIMEOUT=0
+GRUB_HIDDEN_TIMEOUT_QUIET=true
+GRUB_TIMEOUT=10
+GRUB_DISTRIBUTOR=`lsb_release -i -s 2> /dev/null || echo Debian`
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"
+GRUB_CMDLINE_LINUX=""
+~
+~
+"/etc/default/grub" 34L, 1234C
+That GRUB_CMDLINE_LINUX_DEFAULT variable is all we care about change that line to read:
+Tip: hit the “insert” key or the “i” key in vi to edit the file.
+GRUB_CMDLINE_LINUX_DEFAULT="nomodeset"
+Now save.
+Tip: hit the “escape”/”esc” key and type “:wq” to execute ‘write’ and ‘quit’
+You can confirm you did this write by opening the file again and looking at that line.
+Now like we did before, update grub.
+sudo update-grub
+Cool.
+NVIDIA Driver
+Find out which driver you need for your machine, this is a newer distribution of Ubuntu right? Great.
+sudo ubuntu-drivers devices
+...
+vendor   : NVIDIA Corporation
+model    : GT216M [GeForce GT 330M]
+driver   : nvidia-304 - distro non-free
+driver   : nvidia-340 - distro non-free recommended
+driver   : xserver-xorg-video-nouveau - distro free builtin
+...
+See that recommended appendage there? Thats your driver; go get it.
+For me its nvidia-340 for you its nvidia-<#>
+sudo apt-get install nvidia-<#> nvidia-<#>-updates
+Latest NVIDIA updates will do all of your X-server work. Just sit back.
+You may need to add the graphics ppa, if thats the case, then before you run the apt command, do just that.
+sudo add-apt-repository ppa:graphics-drivers
+sudo apt-get update
+sudo apt-get install nvidia-<#> nvidia-<#>-updates
+Second Reboot
+sudo reboot
+This is it, all the marbles.
+Get another machine ready to ssh into your Ubuntu machine in case this doesn't work. You can forever rely on this safety net, so long as port 22 remains open.
+Ignore all the “glitchy “ looking text and graphics, people in your lecture hall will probably think your a hacker.
+Give it time, at least 5 minutes, we must please the GRUB lord.
+If I missed something, or if some other addition of this method worked for you, please leave a comment.
+If you want to reach out to me my email is trashbo4t@protonmail.com.
+Cheers.
