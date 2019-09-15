@@ -1,0 +1,77 @@
+Installation
+Debian 9 "Stretch"
+As of stretch, you don't need nvidia-xconfig anymore, and a xorg.conf file is not needed either in most situations. Also, the 340 series has been forked into its own series of packages to support older cards.
+
+In some situations running nvidia-xconfig is still required for screen-locking and suspend/resume to work properly (922679 Xfce/lightdm/light-locker)
+
+
+Version 390.48 (via stretch-backports)
+For support of Geforce 4xx and higher GPUs Supported devices. For older devices, see Version 340.102 (legacy GPUs) and Version 304.135 (legacy GPUs).
+
+Add stretch-backports to your /etc/apt/sources.list, for example:
+
+# stretch-backports
+deb http://httpredir.debian.org/debian stretch-backports main contrib non-free
+Install Linux headers for the kernel you are using. If you are using the 4.9 Linux kernel in Debian Stretch:
+
+# apt-get install linux-headers-$(uname -r|sed 's/[^-]*-[^-]*-//')
+Or if you are using a Linux kernel from stretch-backports:
+
+# apt-get install -t stretch-backports linux-headers-$(uname -r|sed 's/[^-]*-[^-]*-//')
+Then we can install the package nvidia-driver.
+
+# apt-get update
+# apt-get install -t stretch-backports nvidia-driver 
+DKMS will build the nvidia module for your system.
+Restart your system to enable the nouveau blacklist.
+
+Version 375.66
+For support of ?GeForce 4xx and higher GPUs (supported devices). For older devices, see Version 340.105 (legacy GPUs) and Version 304.135 (legacy GPUs).
+
+Add "contrib" and "non-free" components to /etc/apt/sources.list, for example:
+
+# Debian 9 "Stretch"
+deb http://httpredir.debian.org/debian/ stretch main contrib non-free
+Update the list of available packages. Install the appropriate linux-headers and kernel module packages:
+
+# apt update
+# apt install linux-headers-$(uname -r|sed 's/[^-]*-[^-]*-//') nvidia-driver
+This will install the nvidia-driver package. DKMS will build the nvidia module for your system, via the nvidia-kernel-dkms package.
+
+Restart your system to enable the nouveau blacklist.
+(The answer here may be needed to enable a higher resolution.)
+
+
+Version 340.102 (legacy GPUs)
+For support of GeForce 6xxx and 7xxx GPUs (supported devices).
+
+Add "contrib" and "non-free" components to /etc/apt/sources.list, for example:
+
+# Debian 9 "Stretch"
+deb http://httpredir.debian.org/debian/ stretch main contrib non-free
+Update the list of available packages. Install the appropriate linux-headers and kernel module packages:
+
+# apt update
+# apt install linux-headers-$(uname -r|sed 's/[^-]*-[^-]*-//') nvidia-legacy-340xx-driver
+This will install the nvidia-legacy-340xx-driver package. DKMS will build the nvidia module for your system, via the nvidia-legacy-340xx-kernel-dkms package.
+
+Create an Xorg server configuration file.
+
+Restart your system to enable the nouveau blacklist.
+
+Version 304.135 (legacy GPUs)
+For support of GeForce 6xxx and 7xxx GPUs (supported devices).
+
+Add "contrib" and "non-free" components to /etc/apt/sources.list, for example:
+
+# Debian 9 "Stretch"
+deb http://httpredir.debian.org/debian/ stretch main contrib non-free
+Update the list of available packages. Install the appropriate linux-headers and kernel module packages:
+
+# apt update
+# apt install linux-headers-$(uname -r|sed 's/[^-]*-[^-]*-//') nvidia-legacy-304xx-driver
+This will install the nvidia-legacy-304xx-driver package. DKMS will build the nvidia module for your system, via the nvidia-legacy-304xx-kernel-dkms package.
+
+Create an Xorg server configuration file.
+
+Restart your system to enable the nouveau blacklist.
