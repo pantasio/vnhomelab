@@ -1,0 +1,2 @@
+apt update
+apt install linux-headers-$(uname -r|sed 's/[^-]*-[^-]*-//') nvidia-legacy-340xx-driver
