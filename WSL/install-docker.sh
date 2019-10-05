@@ -35,3 +35,20 @@ sudo apt-get install -y docker-ce
 
 # Allow your user to access the Docker CLI without needing root access.
 sudo usermod -aG docker $USER
+
+
+# Install Docker Compose
+
+# Install Python and PIP.
+sudo apt-get install -y python python-pip
+# Install Docker Compose into your user's home directory.
+pip install --user docker-compose
+
+# Connect to a remote Docker daemon with this 1 liner ( Docker Desktop for Windows)
+echo "export DOCKER_HOST=tcp://localhost:2375" >> ~/.bashrc && source ~/.bashrc
+
+# make sure $HOME/.local/bin is set on your WSL $PATH
+echo 'export PATH="$PATH:$HOME/.local/bin"' >> ~/.profile && source ~/.profile
+
+
+
