@@ -62,3 +62,10 @@ chsh -s /usr/bin/fish
 
 omf install batman
 
+#Intall Tmux
+sudo apt-get install tmux
+mkdir ~/.config/tmux
+cd ~/.config/tmux
+wget https://raw.githubusercontent.com/pantasio/man-GI3/master/.config/tmux/.tmux.conf
+
+
