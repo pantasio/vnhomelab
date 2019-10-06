@@ -50,5 +50,15 @@ echo "export DOCKER_HOST=tcp://localhost:2375" >> ~/.bashrc && source ~/.bashrc
 # make sure $HOME/.local/bin is set on your WSL $PATH
 echo 'export PATH="$PATH:$HOME/.local/bin"' >> ~/.profile && source ~/.profile
 
+# Install Fish shell
+sudo apt-add-repository ppa:fish-shell/release-3
+sudo apt-get update
+sudo apt-get install fish
 
+## install oh-my-fish and theme batman
+curl -L https://get.oh-my.fish > install-ohmyfish
+fish install-ohmyfish --path=~/.local/share/omf --config=~/.config/omf
+chsh -s /usr/bin/fish
+
+omf install batman
 
