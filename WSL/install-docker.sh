@@ -60,7 +60,7 @@ curl -L https://get.oh-my.fish > install-ohmyfish
 fish install-ohmyfish --path=~/.local/share/omf --config=~/.config/omf
 chsh -s /usr/bin/fish
 
-omf install batman
+omf install bobthefish
 
 #Intall Tmux
 sudo apt-get install tmux
