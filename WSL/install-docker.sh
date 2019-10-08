@@ -64,8 +64,7 @@ omf install bobthefish
 
 #Intall Tmux
 sudo apt-get install tmux
-mkdir ~/.config/tmux
-cd ~/.config/tmux
-wget https://raw.githubusercontent.com/pantasio/man-GI3/master/.config/tmux/.tmux.conf
 
+#Install Nvim
+sudo apt-get install nvim
 
