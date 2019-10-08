@@ -68,5 +68,5 @@ omf install bobthefish
 sudo apt-get install tmux -y
 
 #Install Nvim
-sudo apt-get install nvim -y 
+sudo apt-get install neovim -y 
 
