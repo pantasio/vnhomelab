@@ -51,9 +51,11 @@ echo "export DOCKER_HOST=tcp://localhost:2375" >> ~/.bashrc && source ~/.bashrc
 echo 'export PATH="$PATH:$HOME/.local/bin"' >> ~/.profile && source ~/.profile
 
 # Install Fish shell
-sudo apt-add-repository ppa:fish-shell/release-3
+sudo apt-add-repository ppa:fish-shell/release-3 -y
 sudo apt-get update
-sudo apt-get install fish
+sudo apt-get install fish -y
+
+chsh -s /usr/bin/fish
 
 ## install oh-my-fish and theme batman
 curl -L https://get.oh-my.fish > install-ohmyfish
@@ -63,8 +65,8 @@ chsh -s /usr/bin/fish
 omf install bobthefish
 
 #Intall Tmux
-sudo apt-get install tmux
+sudo apt-get install tmux -y
 
 #Install Nvim
-sudo apt-get install nvim
+sudo apt-get install nvim -y 
 
