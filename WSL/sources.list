@@ -51,3 +51,8 @@ deb http://security.ubuntu.com/ubuntu/ bionic-security universe
 # deb-src http://security.ubuntu.com/ubuntu/ bionic-security universe
 deb http://security.ubuntu.com/ubuntu/ bionic-security multiverse
 # deb-src http://security.ubuntu.com/ubuntu/ bionic-security multiverse
+
+
+### NeoVim
+deb http://ppa.launchpad.net/neovim-ppa/unstable/ubuntu bionic main 
+deb-src http://ppa.launchpad.net/neovim-ppa/unstable/ubuntu bionic main 
