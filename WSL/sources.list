@@ -74,7 +74,8 @@ deb http://security.ubuntu.com/ubuntu/ bionic-security universe
 deb http://security.ubuntu.com/ubuntu/ bionic-security multiverse
 # deb-src http://security.ubuntu.com/ubuntu/ bionic-security multiverse
 
+##############################################
+# APT_FAST
+##############################################
 
-### NeoVim
-deb http://ppa.launchpad.net/neovim-ppa/unstable/ubuntu bionic main 
-deb-src http://ppa.launchpad.net/neovim-ppa/unstable/ubuntu bionic main 
+# MIRRORS=( ‘http://opensource.xtdv.net/ubuntu, http://mirrors.nhanhoa.com/ubuntu, http://mirror.ehost.vn/ubuntu, http://mirror.0x.sg/ubuntu, http://free.nchc.org.tw/ubuntu, http://mirror.xtom.com.hk/ubuntu/, http://archive.ubuntu.com/ubuntu, ’)
