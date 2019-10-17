@@ -1,9 +1,8 @@
 #!/bin/bash
 
 # Update the apt package list.
-sudo apt-get update -y
-
-sudo apt-get install -y software-properties-common
+apt-get update -y
+apt-get install -y software-properties-common
 
 add-apt-repository ppa:apt-fast/stable -y
 apt-get update -y
