@@ -37,3 +37,6 @@ https://blog.hawkhost.com/2010/07/02/tmux-%E2%80%93-the-terminal-multiplexer-par
 
 ### Some ...
 https://blog.hawkhost.com/2010/06/28/tmux-the-terminal-multiplexer/
+
+## Use Tmuxinator Session Manager  or  Switch between tmux Terminal Sessions
+https://www.tecmint.com/tips-for-tmux-terminal-sessions/
