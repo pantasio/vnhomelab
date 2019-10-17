@@ -1,3 +1,5 @@
+#!/bin/bash
+
 ## Init Install
 mkdir docker-init-image   
 cd docker-init-image    
