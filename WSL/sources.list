@@ -12,6 +12,15 @@
 ##http://mirrors.nhanhoa.com/ubuntu/
 ## sed -i 's/http:\/\/archive.ubuntu.com\/ubuntu\//http:\/\/mirrors.nhanhoa.com\/ubuntu\//' /etc/apt/sources.list
 
+#taiwan 20G
+#http://free.nchc.org.tw/ubuntu/
+#Singapore 10G
+#http://mirror.0x.sg/ubuntu/
+#Japan 10G
+#http://linux.yz.yamagata-u.ac.jp/ubuntu/
+#Hongkong 10G
+#http://mirror.xtom.com.hk/ubuntu/
+
 ##http://archive.ubuntu.com/ubuntu/
 
 ## Run command below or change mirror 
