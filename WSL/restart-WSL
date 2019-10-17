@@ -1,0 +1,3 @@
+PowerShell Core (Admin) and run this:
+
+Get-Service LxssManager | Restart-Service
