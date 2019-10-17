@@ -35,9 +35,9 @@ apt-fast install -y wget tar libevent-dev libncurses-dev
 apt-fast install -y ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip gawk   
 
 VERSION=3.0-rc5   
-#wget https://github.com/tmux/tmux/releases/download/${VERSION}/tmux-${VERSION}.tar.gz
-#tar xf tmux-${VERSION}.tar.gz
-#rm -f tmux-${VERSION}.tar.gz
+#wget https://github.com/tmux/tmux/releases/download/${VERSION}/tmux-${VERSION}.tar.gz    
+#tar xf tmux-${VERSION}.tar.gz    
+#rm -f tmux-${VERSION}.tar.gz   
 
 wget https://github.com/tmux/tmux/releases/download/3.0/tmux-3.0-rc5.tar.gz   
 tar xf tmux-3.0-rc5.tar.gz    
