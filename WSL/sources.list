@@ -1,9 +1,17 @@
-##http://opensource.xtdv.net/ubuntu/
-##http://mirror.clearsky.vn/ubuntu/
 ##http://mirror.ehost.vn/ubuntu/
+## sed -i 's/http:\/\/archive.ubuntu.com\/ubuntu\//http:\/\/mirror.ehost.vn\/ubuntu\//' /etc/apt/sources.list
+
+##http://opensource.xtdv.net/ubuntu/
+## sed -i 's/http:\/\/archive.ubuntu.com\/ubuntu\//http:\/\/opensource.xtdv.net\/ubuntu\//' /etc/apt/sources.list
+
+##http://mirror.clearsky.vn/ubuntu/
 ##http://mirrors.vhost.vn/ubuntu/
+
 ##http://mirrors.nhanhoa.com/ubuntu/
+## sed -i 's/http:\/\/archive.ubuntu.com\/ubuntu\//http:\/\/mirrors.nhanhoa.com\/ubuntu\//' /etc/apt/sources.list
+
 ##http://archive.ubuntu.com/ubuntu/
+
 ## Run command below or change mirror 
 ## sed -i 's/http:\/\/archive.ubuntu.com\/ubuntu\//http:\/\/mirror.ehost.vn\/ubuntu\//' /etc/apt/sources.list
 
