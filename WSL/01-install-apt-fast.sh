@@ -1,9 +1,5 @@
 #!/bin/bash
 
-# Update the apt package list.
-apt-get update -y
-apt-get install -y software-properties-common git curl wget
-
 add-apt-repository ppa:apt-fast/stable -y
 apt-get update -y
 apt-get install apt-fast -y
