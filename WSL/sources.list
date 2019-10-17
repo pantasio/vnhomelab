@@ -1,12 +1,14 @@
-##http://mirror.ehost.vn/ubuntu/
-## sed -i 's/http:\/\/archive.ubuntu.com\/ubuntu\//http:\/\/mirror.ehost.vn\/ubuntu\//' /etc/apt/sources.list
+# Check here https://launchpad.net/ubuntu/+archivemirrors
 
+#Num1
 ##http://opensource.xtdv.net/ubuntu/
 ## sed -i 's/http:\/\/archive.ubuntu.com\/ubuntu\//http:\/\/opensource.xtdv.net\/ubuntu\//' /etc/apt/sources.list
 
-##http://mirror.clearsky.vn/ubuntu/
-##http://mirrors.vhost.vn/ubuntu/
+#Num2
+##http://mirror.ehost.vn/ubuntu/
+## sed -i 's/http:\/\/archive.ubuntu.com\/ubuntu\//http:\/\/mirror.ehost.vn\/ubuntu\//' /etc/apt/sources.list
 
+#num3
 ##http://mirrors.nhanhoa.com/ubuntu/
 ## sed -i 's/http:\/\/archive.ubuntu.com\/ubuntu\//http:\/\/mirrors.nhanhoa.com\/ubuntu\//' /etc/apt/sources.list
 
