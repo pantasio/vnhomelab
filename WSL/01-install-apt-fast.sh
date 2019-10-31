@@ -5,7 +5,7 @@ apt-get update -y
 apt-get install apt-fast -y
 
 ##############################################
-# APT_FAST 
+# APT_FAST
 # nano /etc/apt-fast.conf
 #MIRRORS=( ‘http://archive.ubuntu.com/ubuntu, http://de.archive.ubuntu.com/ubuntu’)
 ##############################################
@@ -16,7 +16,7 @@ echo "apt-fast.conf file"
 sleep 3
 
 wget https://raw.githubusercontent.com/pantasio/vnhomelab/master/WSL/apt-fast.conf
-mv ./apt-fast.conf /etc/apt-fast.conf
+sudo mv ./apt-fast.conf /etc/apt-fast.conf
 
 echo "#########################"
 echo "DONE, apt-fast Install successed"
