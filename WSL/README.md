@@ -12,7 +12,6 @@ chmod +x 00-init-install.sh
 wget https://raw.githubusercontent.com/pantasio/vnhomelab/master/WSL/01-install-apt-fast.sh
 ### 02 fish
 wget https://raw.githubusercontent.com/pantasio/vnhomelab/master/WSL/02-install-fish.sh
-wget https://raw.githubusercontent.com/pantasio/vnhomelab/master/WSL/02a-fish-theme.sh
 ### 03 Neovim
 wget https://raw.githubusercontent.com/pantasio/vnhomelab/master/WSL/03-install-neovim.sh
 ### 04 Tmux
