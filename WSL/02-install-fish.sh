@@ -11,8 +11,3 @@ chsh -s /usr/bin/fish
 curl -L https://get.oh-my.fish > install-ohmyfish
 fish install-ohmyfish --path=~/.local/share/omf --config=~/.config/omf
 chsh -s /usr/bin/fish
-
-sleep 5
-echo "Install bobthefish"
-omf install bobthefish
-
