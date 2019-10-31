@@ -1,8 +1,8 @@
 #!/bin/bash
 
-add-apt-repository ppa:apt-fast/stable -y
-apt-get update -y
-apt-get install apt-fast -y
+sudo add-apt-repository ppa:apt-fast/stable -y
+sudo apt-get update -y
+sudo apt-get install apt-fast -y
 
 ##############################################
 # APT_FAST
