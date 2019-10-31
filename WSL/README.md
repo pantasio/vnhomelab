@@ -17,4 +17,4 @@ wget https://raw.githubusercontent.com/pantasio/vnhomelab/master/WSL/03-install-
 ### 04 Tmux
 wget https://raw.githubusercontent.com/pantasio/vnhomelab/master/WSL/04-install-tmux.sh
 
-chmox +x *.sh
+chmod +x *.sh
