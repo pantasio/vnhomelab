@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Update the apt package list.
-apt-fast update -y
+sudo apt-fast update -y
 
-add-apt-repository -y ppa:neovim-ppa/unstable
-apt-fast update -y
-apt-fast install -y neovim 
+sudo add-apt-repository -y ppa:neovim-ppa/unstable
+sudo apt-fast update -y
+sudo apt-fast install -y neovim

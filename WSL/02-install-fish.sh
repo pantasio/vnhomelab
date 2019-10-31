@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Install Fish shell
-apt-add-repository ppa:fish-shell/release-3 -y
-apt-fast update -y
-apt-fast install -y fish 
+sudo apt-add-repository ppa:fish-shell/release-3 -y
+sudo apt-fast update -y
+sudo apt-fast install -y fish
 
 chsh -s /usr/bin/fish
 

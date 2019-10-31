@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Update the apt package list.
-apt-fast update -y
+sudo apt-fast update -y
 
-apt-fast install -y wget tar libevent-dev libncurses-dev
-apt-fast install -y ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip gawk
+sudo apt-fast install -y wget tar libevent-dev libncurses-dev
+sudoapt-fast install -y ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip gawk
 
 wget https://github.com/tmux/tmux/releases/download/3.0/tmux-3.0-rc5.tar.gz
 tar xf tmux-3.0-rc5.tar.gz
