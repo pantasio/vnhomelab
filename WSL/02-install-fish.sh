@@ -13,8 +13,12 @@ fish install-ohmyfish --path=~/.local/share/omf --config=~/.config/omf
 chsh -s /usr/bin/fish
 
 ## Install theme fish [bobthefish]
-
-echo "install Fish DONE. <br>"
-echo "Now we Install bobthefish theme for fishshell. <br>"
-echo "Pls run command <br><br>"
-echo "omf install bobthefish<br><br>"
+clear
+echo "########"
+echo "          Install Fish DONE."
+echo "          Now we Install bobthefish theme for fishshell."
+echo "          Pls run command:"
+echo ""
+echo "          omf install bobthefish"
+echo ""
+echo "########"
