@@ -1,2 +1,2 @@
-choco install microsoft-windows-terminal git
-choco install lxrunoffline
+choco install microsoft-windows-terminal git  
+choco install lxrunoffline   
