@@ -22,3 +22,9 @@ echo ""
 echo "          omf install bobthefish"
 echo ""
 echo "########"
+
+## Install Autocomplte
+#Run in fish
+#```
+#fish_update_completions
+#```
