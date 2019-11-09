@@ -34,4 +34,5 @@ echo "Install Fish"
 
 
 
+
 rm -rf ~/wsl-init-image
