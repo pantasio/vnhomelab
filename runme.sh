@@ -1,5 +1,4 @@
 #!/bin/bash
-
 ## Init Install
 mkdir ~/wsl-init-image
 cd ~/wsl-init-image
