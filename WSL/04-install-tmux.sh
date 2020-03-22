@@ -16,5 +16,5 @@ make
 make install
 cd ~
 rm -rf /usr/local/src/tmux-\*
-mv tmux-3.1-rc3 /usr/local/src
+sudo mv tmux-3.1-rc3 /usr/local/src
 
